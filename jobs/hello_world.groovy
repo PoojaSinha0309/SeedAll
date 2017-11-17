@@ -1,5 +1,11 @@
 job('Hello World') {
-  steps {
-    shell('echo "Hello World!"')
-  }
+	scm {
+        git('https://github.com/PoojaSinha0309/Seed-plugin-devops.git')
+    }
+	triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        maven('-e clean test')
+    }
 }
